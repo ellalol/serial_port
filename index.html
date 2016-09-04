@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Linux)">
+	<META NAME="CREATED" CONTENT="20040518;20033200">
+	<META NAME="CHANGED" CONTENT="20110704;22501600">
+	<META NAME="CHANGEDBY" CONTENT="xxx ">
+	<STYLE TYPE="text/css">
+	<!--
+		H1 { text-decoration: underline }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1>Serial Port Programming</H1>
+<P ALIGN=LEFT><FONT FACE="Times, serif">The<SPAN STYLE="text-decoration: none">
+RS232 serial port is a legacy port that was used for printers the
+mouse and other equipment. It allows byte wide data to the
+transmitted and received on one wire (plus ground) thus reducing the
+cost of cabling. Many new machines omit the serial port completely
+but it still has its uses-</SPAN></FONT></P>
+<UL>
+	<LI><P ALIGN=LEFT STYLE="text-decoration: none"><FONT FACE="Times, serif">Talking
+	to legacy equipment such as modems and routers.</FONT></P>
+	<LI><P ALIGN=LEFT STYLE="text-decoration: none"><FONT FACE="Times, serif">Talking
+	to embedded controllers and other very simple and cheap bits of
+	equipment.</FONT></P>
+	<LI><P ALIGN=LEFT STYLE="text-decoration: none"><FONT FACE="Times, serif">Direct
+	IO port control of the output and input bits. The inputs can cope
+	with anything up to +- 30v input, and the outputs can drive a small
+	LED. On a desktop the outputs have enough current drive to power a
+	small microprocessor. Outputs vary and have a voltage of between
+	+-3v to +-12v with an impedance of between 3000-7000 ohms.<BR>Using
+	added electronics its possible to directly control 240v power
+	opto-triacs and all kinds of hardware.</FONT></P>
+</UL>
+<P ALIGN=LEFT STYLE="text-decoration: none"><FONT FACE="Times, serif">Note
+that USB to serial port converters cost only a few dollars.  The
+access rate for the control registers is at best 250 Hz,  much slower
+than the 1MHz of a real serial port.</FONT></P>
+<P ALIGN=LEFT STYLE="text-decoration: none"><FONT FACE="Times, serif">There
+are 3 ways to work with the serial port-</FONT></P>
+<OL>
+	<LI><P ALIGN=LEFT STYLE="text-decoration: none"><FONT FACE="Times, serif">Use
+	and application program such as the gtkterm or putty to send
+	characters to the serial port and display what has been received.
+	This is a simple way to check your port works. Simply connect pins 2
+	and 3 on the RS-232 port (male DB-9 or DB-25) and see if what you
+	type is echoed back.</FONT></P>
+	<LI><P ALIGN=LEFT STYLE="text-decoration: none"><FONT FACE="Times, serif">Drive
+	the serial port from C or C++ code using the operating system API.
+	The operating system handles all the interrupted driven operation
+	and buffering.</FONT></P>
+	<LI><P ALIGN=LEFT STYLE="text-decoration: none"><FONT FACE="Times, serif">Drive
+	the IO ports in the modem directly from C or C++ code. This can get
+	higher speed operation but is more complex (unless just bit port
+	control is required).</FONT></P>
+</OL>
+<P ALIGN=LEFT STYLE="text-decoration: none"><FONT FACE="Times, serif">This
+section shows how to use the second option.</FONT></P>
+<P ALIGN=LEFT><A HREF="tx_rx_serial.c"><SPAN STYLE="text-decoration: none"><FONT FACE="Times, serif"><B>tx_rx_serial</B></FONT></SPAN></A><SPAN STYLE="text-decoration: none">
+</SPAN><SPAN STYLE="text-decoration: none"><FONT FACE="Times, serif">:
+code that transmits and receives serial data. Use this as the basis
+of your own code.</FONT></SPAN></P>
+<P ALIGN=LEFT><A HREF="serial_toggle_DTR.c"><SPAN STYLE="text-decoration: none"><FONT FACE="Times, serif"><B>serial_toggle_DTR.c</B></FONT></SPAN></A><SPAN STYLE="text-decoration: none">
+</SPAN><SPAN STYLE="text-decoration: none"><FONT FACE="Times, serif">:
+toggles the DTR pin at about 2 Hz.</FONT></SPAN></P>
+<P ALIGN=LEFT><SPAN STYLE="text-decoration: none"><FONT FACE="Times, serif">serial_programming.html
+: an excellent introduction to serial ports, their programming, and
+pin out from Michael Sweet. See the section on
+documentation/hardware.</FONT></SPAN></P>
+<P ALIGN=LEFT><BR><BR>
+</P>
+</BODY>
+</HTML>
